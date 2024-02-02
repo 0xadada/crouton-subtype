@@ -1,0 +1,63 @@
+<div class="files-table">
+  <header class="header">
+    <div>
+      <input
+        type="checkbox"
+        checked={{this.areAllSelected}}
+        {{indeterminate this.areSomeSelected}}
+        {{on 'change' this.toggleAll}}
+        />
+    </div>
+
+    <div class="selected-count">Selected {{this.count}}</div>
+
+    <button class="download" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="download-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+        <path d="M12 17V3" />
+        <path d="m6 11 6 6 6-6" />
+        <path d="M19 21H5" />
+      </svg>
+      <span class="download-label">Download Selected</span>
+    </button>
+  </header>
+
+  <table class="files-table-table">
+    <thead>
+      <td class="header-checkbox"></td>
+      <td class="header-name">Name</td>
+      <td class="header-device">Device</td>
+      <td class="header-path">Path</td>
+      <td class="header-icon"></td>
+      <td class="header-status">status</td>
+    </thead>
+    <tbody>
+      {{#each @files as |file index|}}
+        <tr class="row">
+          <td>
+            <input
+              type="checkbox"
+              {{on 'change' (fn this.toggle index)}}
+              checked={{apply-fn this.isChecked this.selectedState index}} />
+          </td>
+          <td>
+            {{file.name}}
+          </td>
+          <td>
+            {{file.device}}
+          </td>
+          <td>
+            <span class="concat">
+            {{file.path}}
+            </span>
+          </td>
+          <td>
+            <FileIcon @file={{file}} />
+          </td>
+          <td>
+            <FileStatus @file={{file}} />
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

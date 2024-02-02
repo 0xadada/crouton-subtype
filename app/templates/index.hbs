@@ -1,14 +1,5 @@
 {{page-title "Index"}}
 
-<ol>
-  {{#each this.model as |file|}}
-    <li>
-      {{file.name}}
-      {{file.device}}
-      {{file.path}}
-      <FileStatus @file={{file}} />
-    </li>
-  {{/each}}
-</ol>
+<FilesTable @files={{this.model}} />
 
 {{outlet}}
