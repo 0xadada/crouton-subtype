@@ -2,12 +2,12 @@
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function (defaults) {
+module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
     'ember-cli-babel': { enableTypeScriptTransform: true },
-
-    // Add options here
   });
+
+  app.import('node_modules/system-font-i18n-css/system-sans-serif.css');
 
   return app.toTree();
 };
