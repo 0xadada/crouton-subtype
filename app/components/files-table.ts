@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import type { ScannedFiles } from 'crouton-subtype/lib/data.json.d';
+import type { ScannedFile, ScannedFiles } from 'crouton-subtype/lib/data.json.d';
 
 export interface FilesTableSignature {
   Args: {
@@ -11,6 +11,10 @@ export interface FilesTableSignature {
 
 export default class FilesTable extends Component<FilesTableSignature> {
   @tracked selectedState = new Array(this.args.files.length).fill(false);
+
+  isActive(state: Array<boolean>, index: string) {
+    return state[+index] ? 'selected' : '';
+  }
 
   isChecked(state: Array<boolean>, index: string) {
     return state[+index];
@@ -50,5 +54,19 @@ export default class FilesTable extends Component<FilesTableSignature> {
     } else {
       this.selectedState = new Array(this.args.files.length).fill(true);
     }
+  }
+
+  @action
+  download() {
+    const selectedFiles: Array<string> = [];
+    this.selectedState.forEach((value,index) => {
+      if(value) {
+        const file = (this.args.files[index] as ScannedFile);
+        selectedFiles.push(`${file.device} ${file.path}`);
+      }
+    });
+
+    const message = selectedFiles.join('\n');
+    alert(message);
   }
 }

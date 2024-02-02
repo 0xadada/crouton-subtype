@@ -1,5 +1,5 @@
-<div class="files-table">
-  <header class="header">
+<div local-class="component">
+  <header local-class="controls">
     <div>
       <input
         type="checkbox"
@@ -9,30 +9,38 @@
         />
     </div>
 
-    <div class="selected-count">Selected {{this.count}}</div>
+    <div local-class="selections">Selected {{this.count}}</div>
 
-    <button class="download" type="button">
+    <button local-class="download" type="button" {{on 'click' this.download}}>
       <svg xmlns="http://www.w3.org/2000/svg" class="download-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
         <path d="M12 17V3" />
         <path d="m6 11 6 6 6-6" />
         <path d="M19 21H5" />
       </svg>
-      <span class="download-label">Download Selected</span>
+      <span local-class="download-label">Download Selected</span>
     </button>
   </header>
 
-  <table class="files-table-table">
-    <thead>
-      <td class="header-checkbox"></td>
-      <td class="header-name">Name</td>
-      <td class="header-device">Device</td>
-      <td class="header-path">Path</td>
-      <td class="header-icon"></td>
-      <td class="header-status">status</td>
+  <table local-class="table">
+    <colgroup>
+      <col local-class="col-checkbox" />
+      <col local-class="col-name" />
+      <col local-class="col-device" />
+      <col />
+      <col local-class="col-icon" />
+      <col local-class="col-status" />
+    </colgroup>
+    <thead local-class="table-head">
+      <td local-class="header"></td>
+      <td local-class="header">Name</td>
+      <td local-class="header">Device</td>
+      <td local-class="header">Path</td>
+      <td local-class="header"></td>
+      <td local-class="header">Status</td>
     </thead>
     <tbody>
       {{#each @files as |file index|}}
-        <tr class="row">
+        <tr local-class="row {{apply-fn this.isActive this.selectedState index}}" >
           <td>
             <input
               type="checkbox"
@@ -46,8 +54,8 @@
             {{file.device}}
           </td>
           <td>
-            <span class="concat">
-            {{file.path}}
+            <span local-class="concat">
+              {{file.path}}
             </span>
           </td>
           <td>

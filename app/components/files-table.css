@@ -1,3 +1,78 @@
-.row {
-  color: red;
+.component {
+  box-shadow: rgb(60 64 67 / 15%) 0px 1px 3px 1px;
+}
+
+.controls {
+  display: flex;
+  padding: 1rem 0.25rem 0 0.25rem;
+  margin: 1rem 0;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.download,
+.selections {
+  font-size: 1.25rem;
+  padding: 0 1rem;
+}
+
+.download {
+  border: none;
+  margin: 0;
+  padding: 0 1rem;
+  background: none;
+  font: inherit;
+  font-size: 1.25rem;
+  color: inherit;
+  cursor: pointer;
+}
+
+.table {
+  border: 1px solid rgba(235, 235, 235, 0.6);
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.col-checkbox,
+.col-icon {
+  width: 2rem;
+}
+.col-name,
+.col-device,
+.col-status {
+  width: 9rem;
+}
+
+.table-head {
+  font-size: 1.25rem;
+}
+
+.table-head,
+.row td {
+  border-bottom: 1px solid rgba(235, 235, 235, 1);
+}
+
+.header {
+  padding: 1rem 0.5rem;
+}
+
+.row td {
+  padding: 0.5rem;
+}
+
+.row.selected td {
+  background-color: rgba(235, 235, 235, 1);
+}
+.row:hover td,
+.row.selected:hover td {
+  background-color: rgba(235, 235, 235, 0.6);
+}
+
+.concat {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
 }
