@@ -63,10 +63,15 @@ export default class FilesTable extends Component<FilesTableSignature> {
   download() {
     const selectedFiles: Array<string> = [];
     this.selectedState.forEach((value, index) => {
+      const file = this.args.files[index] as ScannedFile;
       if (value) {
-        const file = this.args.files[index] as ScannedFile;
         selectedFiles.push(`${file.device} ${file.path}`);
       }
+      /* TODO: If Product wants only 'avilable' files to download
+      if (value && file.status === 'available') {
+        selectedFiles.push(`${file.device} ${file.path}`);
+      }
+       */
     });
 
     const message = selectedFiles.join('\n');
