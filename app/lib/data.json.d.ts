@@ -3,6 +3,6 @@ export type ScannedFile = {
   device: string;
   path: string;
   status: 'available' | 'scheduled';
-}
+};
 
 export type ScannedFiles = Array<ScannedFile>;

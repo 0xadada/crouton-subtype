@@ -1,10 +1,10 @@
 .component {
-  box-shadow: rgb(60 64 67 / 15%) 0px 1px 3px 1px;
+  box-shadow: rgb(60 64 67 / 15%) 0 1px 3px 1px;
 }
 
 .controls {
   display: flex;
-  padding: 1rem 0.25rem 0 0.25rem;
+  padding: 1rem 0.25rem 0;
   margin: 1rem 0;
   justify-content: flex-start;
   align-items: center;
@@ -28,7 +28,7 @@
 }
 
 .table {
-  border: 1px solid rgba(235, 235, 235, 0.6);
+  border: 1px solid rgb(235 235 235 / 60%);
   border-collapse: collapse;
   table-layout: fixed;
   width: 100%;
@@ -38,6 +38,7 @@
 .col-icon {
   width: 2rem;
 }
+
 .col-name,
 .col-device,
 .col-status {
@@ -50,7 +51,7 @@
 
 .table-head,
 .row td {
-  border-bottom: 1px solid rgba(235, 235, 235, 1);
+  border-bottom: 1px solid rgb(235 235 235 / 100%);
 }
 
 .header {
@@ -62,11 +63,12 @@
 }
 
 .row.selected td {
-  background-color: rgba(235, 235, 235, 1);
+  background-color: rgb(235 235 235 / 100%);
 }
+
 .row:hover td,
 .row.selected:hover td {
-  background-color: rgba(235, 235, 235, 0.6);
+  background-color: rgb(235 235 235 / 60%);
 }
 
 .concat {

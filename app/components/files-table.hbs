@@ -1,12 +1,14 @@
 <div local-class="component">
   <header local-class="controls">
     <div>
-      <input
-        type="checkbox"
-        checked={{this.areAllSelected}}
-        {{indeterminate this.areSomeSelected}}
-        {{on 'change' this.toggleAll}}
-        />
+      <label title="Toggle all or none">
+        <input
+          type="checkbox"
+          checked={{this.areAllSelected}}
+          {{indeterminate this.areSomeSelected}}
+          {{on 'change' this.toggleAll}}
+          />
+      </label>
     </div>
 
     <div local-class="selections">Selected {{this.count}}</div>
@@ -42,10 +44,12 @@
       {{#each @files as |file index|}}
         <tr local-class="row {{apply-fn this.isActive this.selectedState index}}" >
           <td>
-            <input
-              type="checkbox"
-              {{on 'change' (fn this.toggle index)}}
-              checked={{apply-fn this.isChecked this.selectedState index}} />
+            <label title="Select / Deselect file">
+              <input
+                type="checkbox"
+                {{on 'change' (fn this.toggle index)}}
+                checked={{apply-fn this.isChecked this.selectedState index}} />
+            </label>
           </td>
           <td>
             {{file.name}}
