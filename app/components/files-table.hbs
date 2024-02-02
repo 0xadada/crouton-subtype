@@ -65,6 +65,12 @@
             <FileStatus @file={{file}} />
           </td>
         </tr>
+      {{else}}
+        <tr>
+          <td colspan="6">
+            No files available.
+          </td>
+        </tr>
       {{/each}}
     </tbody>
   </table>

@@ -6,10 +6,17 @@ import { hbs } from 'ember-cli-htmlbars';
 module('Integration | Modifier | indeterminate', function (hooks) {
   setupRenderingTest(hooks);
 
-  // Replace this with your real tests.
-  test('it renders', async function (assert) {
-    await render(hbs`<div {{indeterminate}}></div>`);
+  test('it renders in an indeterminiate state', async function (assert) {
+    this.set('testValue', true);
+    await render(hbs`<input type="checkbox" {{indeterminate this.testValue}} />`);
+    const el = this.element.querySelector('input');
+    assert.true(el.indeterminate);
+  });
 
-    assert.ok(true);
+  test('it doesnt render in an indeterminiate state', async function (assert) {
+    this.set('testValue', false);
+    await render(hbs`<input type="checkbox" {{indeterminate this.testValue}} />`);
+    const el = this.element.querySelector('input');
+    assert.false(el.indeterminate);
   });
 });
