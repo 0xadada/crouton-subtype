@@ -13,7 +13,7 @@
 
     <div local-class="selections">Selected {{this.count}}</div>
 
-    <button local-class="download" type="button" {{on 'click' this.download}}>
+    <button local-class="download" type="button" {{on 'click' this.download}} disabled={{this.areNoneSelected}}>
       <svg xmlns="http://www.w3.org/2000/svg" class="download-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
         <path d="M12 17V3" />
         <path d="m6 11 6 6 6-6" />
@@ -42,13 +42,13 @@
     </thead>
     <tbody>
       {{#each @files as |file index|}}
-        <tr local-class="row {{apply-fn this.isActive this.selectedState index}}" >
+        <tr local-class="row {{this.isSelected index}}" >
           <td>
             <label title="Select / Deselect file">
               <input
                 type="checkbox"
                 {{on 'change' (fn this.toggle index)}}
-                checked={{apply-fn this.isChecked this.selectedState index}} />
+                checked={{this.isChecked index}} />
             </label>
           </td>
           <td>

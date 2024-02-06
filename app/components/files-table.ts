@@ -15,13 +15,10 @@ export interface FilesTableSignature {
 export default class FilesTable extends Component<FilesTableSignature> {
   @tracked selectedState = new Array(this.args.files.length).fill(false);
 
-  isActive(state: Array<boolean>, index: string) {
-    return state[+index] ? 'selected' : '';
-  }
+  isSelected = (index: string) =>
+    this.selectedState[+index] ? 'selected' : '';
 
-  isChecked(state: Array<boolean>, index: string) {
-    return state[+index];
-  }
+  isChecked = (index: number) => this.selectedState[index];
 
   get count() {
     return this.selectedState.reduce(
