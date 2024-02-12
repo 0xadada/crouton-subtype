@@ -27,12 +27,10 @@ export default class FilesTable extends Component<FilesTableSignature> {
     return this.count === this.selectedState.length;
   }
   get areNoneSelected() {
-    const noneSelected = this.count === 0;
-    return noneSelected;
+    return this.count === 0;
   }
   get areSomeSelected() {
-    const areSome = !this.areNoneSelected && !this.areAllSelected;
-    return areSome;
+    return !this.areNoneSelected && !this.areAllSelected;
   }
 
   @action
@@ -44,9 +42,6 @@ export default class FilesTable extends Component<FilesTableSignature> {
 
   @action
   toggleAll() {
-    const x = this.isSelected;
-
-    x;
     if (this.areAllSelected) {
       this.selectedState = new Array(this.args.files.length).fill(false);
     } else {
