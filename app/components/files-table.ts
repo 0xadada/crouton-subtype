@@ -1,10 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import type {
-  ScannedFile,
-  ScannedFiles,
-} from 'crouton-subtype/lib/data.json.d';
+import type { ScannedFile, ScannedFiles } from '../lib/data.json.d';
 
 export interface FilesTableSignature {
   Args: {
@@ -26,13 +23,11 @@ export default class FilesTable extends Component<FilesTableSignature> {
       0,
     );
   }
-
   get areAllSelected() {
-    const allSelected = this.selectedState.every((value) => value === true);
-    return allSelected;
+    return this.count === this.selectedState.length;
   }
   get areNoneSelected() {
-    const noneSelected = this.selectedState.every((value) => value === false);
+    const noneSelected = this.count === 0;
     return noneSelected;
   }
   get areSomeSelected() {
@@ -49,6 +44,9 @@ export default class FilesTable extends Component<FilesTableSignature> {
 
   @action
   toggleAll() {
+    const x = this.isSelected;
+
+    x;
     if (this.areAllSelected) {
       this.selectedState = new Array(this.args.files.length).fill(false);
     } else {
